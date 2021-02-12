@@ -17,4 +17,5 @@ $(() => {
   // GAMES
   $('#newGame').on('click', gamesEvents.onNewGame)
   $('.container').hide()
+  $('.box').on('click', gamesEvents.boxClick)
 })
