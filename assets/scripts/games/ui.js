@@ -1,6 +1,7 @@
+const store = require('../store')
 
 const onNewGameSuccess = function () {
-  $('#error-message').html('You have started a new game.')
+  $('#gameMessage').text('Player ' + store.startPlayer + ', it\' your move!.')
   $('.container').show()
 }
 
@@ -9,7 +10,7 @@ const onNewGameFailure = function () {
 }
 
 const isTaken = function () {
-  $('#gameMessage').text('There is already a game peice there.')
+  $('.gameMessage').text('There is already a game peice there.')
   setTimeout(() => {
     $('#gameMessage').html('')
   }, 5000)
