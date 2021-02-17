@@ -7,6 +7,12 @@ const gamesEvents = require('./games/events')
 // require('./example')
 
 $(() => {
+  // Hide
+  $('#index-games').hide()
+  $('#newGame').hide()
+  $('#change-password').hide()
+  $('#sign-out').hide()
+
   // AUTH
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)

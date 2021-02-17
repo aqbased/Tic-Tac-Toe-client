@@ -11,14 +11,16 @@ const onPlayGame = function () {
     $text.html($text.html().replace('X', ''))
     api.showNewGame()
       .then(ui.onPlayAgainSuccess)
-      .catch(ui.onPlayAgainFailure)
+      .catch(ui.onFailure)
   } else {
     console.log('onnewgame')
     store.startPlayer = 'X'
     store.cells = ['', '', '', '', '', '', '', '', '']
+    const $text = $('.col-4')
+    $text.html($text.html().replace('X', ''))
     api.showNewGame()
       .then(ui.onNewGameSuccess)
-      .catch(ui.onNewGameFailure)
+      .catch(ui.onFailure)
   }
 }
 
@@ -63,7 +65,7 @@ const boxClick = function (event) {
     store.cells[event.target.id] = store.startPlayer
     api.updateGame(event.target.id, store.startPlayer, checkForWinner())
       .then(ui.onUpdateSuccess)
-      .catch(ui.onUpdateFailure)
+      .catch(ui.onFailure)
   }
   checkForDraw()
 }
@@ -72,7 +74,7 @@ const indexAllGames = function (event) {
   event.preventDefault()
   api.index()
     .then(ui.onIndexSuccess)
-    .catch(ui.onIndexFailure)
+    .catch(ui.onFailure)
 }
 
 module.exports = {

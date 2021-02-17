@@ -23,6 +23,12 @@ const signInSuccess = function (response) {
   store.user = response.user
   $('form').trigger('reset')
   $('#error-message').text('Thank you for signing in!')
+  $('#index-games').show()
+  $('#newGame').show()
+  $('#change-password').show()
+  $('#sign-out').show()
+  $('#sign-up').hide()
+  $('#sign-in').hide()
   setTimeout(() => {
     $('#error-message').html('')
   }, 5000)
@@ -38,7 +44,11 @@ const signInFailure = function (response) {
 
 const signOutSuccess = function (response) {
   $('form').trigger('reset')
+  $('.container').hide()
   $('#error-message').text('Thank you for visiting.')
+  store.over = true
+  $('#index-games').hide()
+  $('#newGame').hide()
   setTimeout(() => {
     $('#error-message').html('')
   }, 5000)

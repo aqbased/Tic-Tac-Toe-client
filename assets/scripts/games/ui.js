@@ -4,10 +4,11 @@ const store = require('../store')
 const onNewGameSuccess = function (response) {
   store.game = response.game
   $('#gameMessage').text('Player ' + store.startPlayer + ', it\' your move!.')
+  console.log('in ngs')
   $('.container').show()
 }
 
-const onNewGameFailure = function () {
+const onFailure = function () {
   $('#gameMessage').text('Sorry, there was an error.  Please try again.')
   setTimeout(() => {
     $('#gameMessage').html('')
@@ -22,7 +23,10 @@ const isTaken = function () {
 }
 
 const onUpdateSuccess = function () {
-  // If winning message isn't inside the gameMessage ID then switch players
+  // If the tie game message exists, return true
+  if ($('#gameMessage').html() === ('Looks like a tie game!  Restart to win or suffer from mediocrity.')) {
+    return true
+  } // If winning message isn't inside the gameMessage ID then switch players
   if ($('#gameMessage').html() !== ('Player ' + store.startPlayer + ' has won!')) {
     if (store.startPlayer === 'X') {
       store.startPlayer = 'O'
@@ -34,13 +38,6 @@ const onUpdateSuccess = function () {
   }
 }
 
-const onUpdateFailure = function () {
-  $('#gameMessage').text('Sorry, there was an error.  Please try again.')
-  setTimeout(() => {
-    $('#gameMessage').html('')
-  }, 5000)
-}
-
 const isWinner = function () {
   store.over = true
   store.game.over = true
@@ -50,6 +47,7 @@ const isWinner = function () {
 }
 
 const isDraw = function () {
+  store.over = true
   store.game.over = true
   $('#gameMessage').text('Looks like a tie game!  Restart to win or suffer from mediocrity.')
   $('.container').css('pointer-events', 'none')
@@ -59,13 +57,7 @@ const onPlayAgainSuccess = function (response) {
   store.game = response.game
   $('#gameMessage').text('Player ' + store.startPlayer + ', it\' your move!.')
   $('.container').css('pointer-events', '')
-}
-
-const onPlayAgainFailure = function () {
-  $('#gameMessage').text('Sorry, there was an error.  Please try again.')
-  setTimeout(() => {
-    $('#gameMessage').html('')
-  }, 5000)
+  $('.container').show()
 }
 
 const onIndexSuccess = function (responseData) {
@@ -83,13 +75,11 @@ const onIndexSuccess = function (responseData) {
 }
 module.exports = {
   onNewGameSuccess,
-  onNewGameFailure,
   isTaken,
-  onUpdateFailure,
   onUpdateSuccess,
   isWinner,
   isDraw,
   onPlayAgainSuccess,
-  onPlayAgainFailure,
-  onIndexSuccess
+  onIndexSuccess,
+  onFailure
 }
