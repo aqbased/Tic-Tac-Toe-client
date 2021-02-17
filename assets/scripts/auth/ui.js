@@ -1,7 +1,8 @@
 const store = require('./../store')
 
 const signUpSuccess = function (response) {
-  $('#sign-up').trigger('reset')
+  $('form').trigger('reset')
+  // $('#sign-up').trigger('reset')
   $('#error-message').html('Thank you for signing up!')
   // Clear the message after 5 seconds
   setTimeout(() => {
@@ -10,6 +11,7 @@ const signUpSuccess = function (response) {
 }
 
 const signUpFailure = function (response) {
+  $('form').trigger('reset')
   $('#error-message').html('Sorry that didn\'t work, please try again.')
   // Clear the message after 5 seconds
   setTimeout(() => {
@@ -19,14 +21,15 @@ const signUpFailure = function (response) {
 
 const signInSuccess = function (response) {
   store.user = response.user
+  $('form').trigger('reset')
   $('#error-message').text('Thank you for signing in!')
-  $('#sign-in').trigger('reset')
   setTimeout(() => {
     $('#error-message').html('')
   }, 5000)
 }
 
 const signInFailure = function (response) {
+  $('form').trigger('reset')
   $('#error-message').text('Sorry that didn\'t work, please try again.')
   setTimeout(() => {
     $('#error-message').html('')
@@ -34,14 +37,15 @@ const signInFailure = function (response) {
 }
 
 const signOutSuccess = function (response) {
+  $('form').trigger('reset')
   $('#error-message').text('Thank you for visiting.')
-  $('#sign-out').trigger('reset')
   setTimeout(() => {
     $('#error-message').html('')
   }, 5000)
 }
 
 const signOutFailure = function (response) {
+  $('form').trigger('reset')
   $('#error-message').text('You are stuck forever, enjoy your stay.  Please try again.')
   setTimeout(() => {
     $('#error-message').html('')
@@ -49,6 +53,7 @@ const signOutFailure = function (response) {
 }
 
 const changePasswordFailure = function (response) {
+  $('form').trigger('reset')
   $('#error-message').text('Password change attempt failed, please try again.')
   setTimeout(() => {
     $('#error-message').html('')
@@ -56,8 +61,8 @@ const changePasswordFailure = function (response) {
 }
 
 const changePasswordSuccess = function (response) {
+  $('form').trigger('reset')
   $('#error-message').text('You have changed your password.')
-  $('#change-password').trigger('reset')
   setTimeout(() => {
     $('#error-message').html('')
   }, 5000)

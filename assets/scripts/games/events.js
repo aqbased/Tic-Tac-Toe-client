@@ -10,18 +10,16 @@ const onNewGame = function () {
     .catch(ui.onNewGameFailure)
 }
 
-const rotatePlayer = function () {
-  // If winning message isn't inside the gameMessage ID then switch players
-  if ($('#gameMessage').html() !== ('Player ' + store.startPlayer + ' has won!')) {
-    if (store.startPlayer === 'X') {
-      store.startPlayer = 'O'
-      $('#gameMessage').text('Player ' + store.startPlayer + ', it\' your move!.')
-    } else {
-      store.startPlayer = 'X'
-      $('#gameMessage').text('Player ' + store.startPlayer + ', it\' your move!.')
-    }
-  }
+const onPlayAgain = function () {
+  store.startPlayer = 'X'
+  store.cells = ['', '', '', '', '', '', '', '', '']
+  const $text = $('.col-4')
+  $text.html($text.html().replace('X', ''))
+  api.showNewGame()
+    .then(ui.onPlayAgainSuccess)
+    .catch(ui.onPlayAgainFailure)
 }
+
 const checkForWinner = function () {
   if ((store.cells[0] === 'X' && store.cells[1] === 'X' && store.cells[2] === 'X') || (store.cells[0] === 'O' && store.cells[1] === 'O' && store.cells[2] === 'O') ||
   (store.cells[3] === 'X' && store.cells[4] === 'X' && store.cells[5] === 'X') || (store.cells[3] === 'O' && store.cells[4] === 'O' && store.cells[5] === 'O') ||
@@ -31,13 +29,24 @@ const checkForWinner = function () {
   (store.cells[1] === 'X' && store.cells[4] === 'X' && store.cells[7] === 'X') || (store.cells[1] === 'O' && store.cells[4] === 'O' && store.cells[7] === 'O') ||
   (store.cells[2] === 'X' && store.cells[5] === 'X' && store.cells[8] === 'X') || (store.cells[2] === 'O' && store.cells[5] === 'O' && store.cells[8] === 'O') ||
   (store.cells[2] === 'X' && store.cells[4] === 'X' && store.cells[6] === 'X') || (store.cells[2] === 'O' && store.cells[4] === 'O' && store.cells[6] === 'O')) {
-    // if a winner move into ui.js
-    $('#gameMessage').html('Player ' + store.startPlayer + ' has won!')
-    $('.container').css('pointer-events', 'none')
+    ui.isWinner()
     return true
-  } else {
-    return false
+  } else if (checkForDraw()) {
+    return true
   }
+  return false
+}
+
+const checkForDraw = function () {
+  if ((store.cells[0] === 'X' || store.cells[0] === 'O') && (store.cells[1] === 'X' || store.cells[1] === 'O') &&
+  (store.cells[2] === 'X' || store.cells[2] === 'O') && (store.cells[3] === 'X' || store.cells[3] === 'O') &&
+  (store.cells[4] === 'X' || store.cells[4] === 'O') && (store.cells[5] === 'X' || store.cells[5] === 'O') &&
+  (store.cells[6] === 'X' || store.cells[6] === 'O') && (store.cells[7] === 'X' || store.cells[7] === 'O') &&
+  (store.cells[8] === 'X' || store.cells[8] === 'O')) {
+    ui.isDraw()
+    return true
+  }
+  return false
 }
 
 const boxClick = function (event) {
@@ -54,10 +63,12 @@ const boxClick = function (event) {
       .then(ui.onUpdateSuccess)
       .catch(ui.onUpdateFailure)
   }
-  rotatePlayer()
+  checkForDraw()
 }
 
 module.exports = {
   onNewGame,
-  boxClick
+  boxClick,
+  // rotatePlayer,
+  onPlayAgain
 }
