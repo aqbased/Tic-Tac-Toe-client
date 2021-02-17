@@ -2,22 +2,24 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
 
-const onNewGame = function () {
-  store.startPlayer = 'X'
-  store.cells = ['', '', '', '', '', '', '', '', '']
-  api.showNewGame()
-    .then(ui.onNewGameSuccess)
-    .catch(ui.onNewGameFailure)
-}
-
-const onPlayAgain = function () {
-  store.startPlayer = 'X'
-  store.cells = ['', '', '', '', '', '', '', '', '']
-  const $text = $('.col-4')
-  $text.html($text.html().replace('X', ''))
-  api.showNewGame()
-    .then(ui.onPlayAgainSuccess)
-    .catch(ui.onPlayAgainFailure)
+const onPlayGame = function () {
+  if (store.over === true) {
+    console.log('onplayagain')
+    store.startPlayer = 'X'
+    store.cells = ['', '', '', '', '', '', '', '', '']
+    const $text = $('.col-4')
+    $text.html($text.html().replace('X', ''))
+    api.showNewGame()
+      .then(ui.onPlayAgainSuccess)
+      .catch(ui.onPlayAgainFailure)
+  } else {
+    console.log('onnewgame')
+    store.startPlayer = 'X'
+    store.cells = ['', '', '', '', '', '', '', '', '']
+    api.showNewGame()
+      .then(ui.onNewGameSuccess)
+      .catch(ui.onNewGameFailure)
+  }
 }
 
 const checkForWinner = function () {
@@ -66,9 +68,15 @@ const boxClick = function (event) {
   checkForDraw()
 }
 
+const indexAllGames = function (event) {
+  event.preventDefault()
+  api.index()
+    .then(ui.onIndexSuccess)
+    .catch(ui.onIndexFailure)
+}
+
 module.exports = {
-  onNewGame,
   boxClick,
-  // rotatePlayer,
-  onPlayAgain
+  onPlayGame,
+  indexAllGames
 }

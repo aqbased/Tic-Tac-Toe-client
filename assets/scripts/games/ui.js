@@ -42,10 +42,9 @@ const onUpdateFailure = function () {
 }
 
 const isWinner = function () {
+  store.over = true
   store.game.over = true
   store.game.cells = store.cells
-  console.log(store.game.cells)
-  console.log(store.game)
   $('#gameMessage').html('Player ' + store.startPlayer + ' has won!')
   $('.container').css('pointer-events', 'none')
 }
@@ -68,6 +67,20 @@ const onPlayAgainFailure = function () {
     $('#gameMessage').html('')
   }, 5000)
 }
+
+const onIndexSuccess = function (responseData) {
+  const games = responseData.games
+  let gamesHtml = ''
+  games.forEach(game => {
+    gamesHtml += `
+      <p>ID: ${game.owner}<p>
+      <p>Cells Used: ${game.cells}<p>
+      <p>Game Over: ${game.over}<p>
+      <hr>
+    `
+  })
+  $('.modal-body').html(gamesHtml)
+}
 module.exports = {
   onNewGameSuccess,
   onNewGameFailure,
@@ -77,5 +90,6 @@ module.exports = {
   isWinner,
   isDraw,
   onPlayAgainSuccess,
-  onPlayAgainFailure
+  onPlayAgainFailure,
+  onIndexSuccess
 }

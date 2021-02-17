@@ -14,8 +14,8 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
 
   // GAMES
-  $('#newGame').on('click', gamesEvents.onNewGame)
-  $('#newGame').on('click', gamesEvents.onPlayAgain)
+  $('#newGame').on('click', gamesEvents.onPlayGame)
   $('.container').hide()
   $('.box').on('click', gamesEvents.boxClick)
+  $('#index-games').on('click', gamesEvents.indexAllGames)
 })
