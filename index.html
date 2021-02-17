@@ -37,9 +37,32 @@
         </section>
         <div id='error-message'></div>
         <section id='game-section'>
+          <!--Button trigger modal -->
+          <button id='index-games' type="button" class="btn btn-primary" data-toggle="modal" data-target="#gameIndex">
+            View All Games
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="gameIndex" tabindex="-1" role="dialog" aria-labelledby="gameIndexTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="gameIndexTitle">All Games Played</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!-- Games Index goes here -->
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
           <button id='newGame'>Play New Game</button>
-
           <div class="container">
             <div id='gameMessage'></div>
             <div class="row">
