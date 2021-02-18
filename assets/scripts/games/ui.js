@@ -69,7 +69,7 @@ const onIndexSuccess = function (responseData) {
       <hr>
     `
   })
-  $('.modal-body').html(gamesHtml)
+  $('.index-body').html(gamesHtml)
 }
 module.exports = {
   onNewGameSuccess,
