@@ -4,20 +4,20 @@ const store = require('../store')
 
 const onPlayGame = function () {
   if (store.over === true) {
-    console.log('onplayagain')
     store.startPlayer = 'X'
     store.cells = ['', '', '', '', '', '', '', '', '']
     const $text = $('.col-4')
     $text.html($text.html().replace('X', ''))
+    $text.html($text.html().replace('O', ''))
     api.showNewGame()
       .then(ui.onPlayAgainSuccess)
       .catch(ui.onFailure)
   } else {
-    console.log('onnewgame')
     store.startPlayer = 'X'
     store.cells = ['', '', '', '', '', '', '', '', '']
     const $text = $('.col-4')
     $text.html($text.html().replace('X', ''))
+    $text.html($text.html().replace('O', ''))
     api.showNewGame()
       .then(ui.onNewGameSuccess)
       .catch(ui.onFailure)
@@ -57,7 +57,7 @@ const boxClick = function (event) {
   // if space isnt empty trigger ui error message
   if ($(event.target).text() === 'X' || $(event.target).text() === 'O') {
     ui.isTaken()
-    return
+    return true
     // if space is empty, add token to game space
   } else if ($(event.target).text('')) {
     $(event.target).text(store.startPlayer)
@@ -67,7 +67,6 @@ const boxClick = function (event) {
       .then(ui.onUpdateSuccess)
       .catch(ui.onFailure)
   }
-  checkForDraw()
 }
 
 const indexAllGames = function (event) {

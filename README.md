@@ -1,26 +1,36 @@
-# Application Title: A Description
+# Tic-Tac-Toe
 
-This application allows the user to do x, y, and z. Maybe here's a reason why I wanted to do this project, or
-came up with this idea.
+This is the General Assembly Software Engineering Immersive's first tasked project.
+This application allows a user to attempt to best themselves in a game of tic-tac-toe,
+in which player X or O try get 3 in a row to win!
 
 ## Important Links
 
-- [Other Repo](www.link.com)
-- [Deployed API](www.link.com)
-- [Deployed Client](www.link.com)
+- [Deployed Client](https://aqbased.github.io/Tic-Tac-Toe-client/)
+- [Deployed API](https://tic-tac-toe-api-production.herokuapp.com)
+- [General Assembly Git](https://git.generalassemb.ly/aqbased)
 
 ## Planning Story
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id ornare magna. Curabitur leo arcu, elementum in posuere vitae, rutrum eu urna. Quisque tincidunt nulla sed mi cursus, nec tristique est fermentum. Etiam lacinia id neque ut egestas. Sed consequat convallis felis nec posuere. Sed non eros sed velit viverra tincidunt. Etiam et tortor sit amet lacus volutpat dignissim. Vestibulum convallis, felis a posuere pretium, turpis enim sollicitudin neque, pretium finibus leo metus sed sapien. Praesent iaculis pharetra nunc ac rhoncus. Duis eu risus in est porttitor egestas sit amet eget metus. Maecenas iaculis auctor ullamcorper. Donec pretium dolor non nisl egestas bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ullamcorper pulvinar orci interdum mattis. Ut gravida volutpat mauris, a semper risus maximus ut.
+First thing first, I wanted to get a wireframe up to guide my styling and potential
+functionality of the game.  After getting my browser template set up I then worked
+on getting the authentication API calls, forms and functions working properly.  My next objective
+was to design a simple game board to play on, inside the Html file.  After acheiving
+that I worked on the game API calls, buttons and functions working properly.  After the
+functionality met minimum requirement I planned to work on styling.  Most of the problems
+I ran in to were due to minor syntax errors.  Eventually I would carefully scan over code
+and read it to double check and avoid any errors.  Whenever I ran into roadblocks,
+I would spend most of my time reviewing old lessons and then searching google for different
+solutions.  Last but not least I had my team of instructors to point me in the right direction
+of a potential solution.
 
 ### User Stories
 
-- As a user I want to sign in/up
-- As a user I want to Create a new < resource >
-- As a user I want to Read multiple < resources >
-- As a user I want to Read a single < resource >
-- As a user I want to Update a < resource > I own
-- As a user I want to Delete a < resource > I own
+- As a user I want to sign in/up upon loading the page.
+- As a user I want to Create a new game after being signed in.
+- As a user I want to Read multiple games I've played in the past and see if I completed them or not.
+- As a user I want to Update a gameboard as I click on it.
+- As a user I want to change a password after being signed in.
 
 ### Technologies Used
 
@@ -31,12 +41,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id ornare magna
 
 ### Unsolved Problems
 
-- Still need to ....
-- Would like to eventually ....
-
-## Images
-
----
+- Still need to add styling to the page.
+- Would like to eventually have a Win Tracker below the game board.
+- Would like to eventually have the X and O tokens to have custom images instead.
 
 #### Wireframe:
-![wireframe](https://lucidchart.zendesk.com/hc/article_attachments/360001080866/Facebook_Wireframe_-_New_Page.png)
+![wireframe](https://i.imgur.com/TaB8SKa.jpg)

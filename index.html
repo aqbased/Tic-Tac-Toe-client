@@ -1,83 +1,150 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic Tac Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
-
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Tic Tac Toe</h1>
+      <header>
+        <div class='row'>
+          <div class="col-12">
+            <h1>Tic Tac Toe</h1>
+          </div>
+          <div class="col-12">
+            <img alt='mickey and minnie smiling' src='https://www.pngkit.com/png/full/133-1332389_mickey-minnie-artwork-6-mickey-and-minnie-mouse.png'>
+          </div>
+        </div>
+      </header>
       <main>
-        <section id='auth-section'>
-          <form id='sign-up'>
-            <input name="credentials[email]" type="email" placeholder="Enter Email Here" required>
-              <input name="credentials[password]" type="password" placeholder="Enter Password Here" required>
-              <input name="credentials[password_confirmation]" type="password" placeholder="Enter Password Again" required>
-              <button>Sign Up</button>
-          </form>
-          <form id='sign-in'>
-            <input name="credentials[email]" type="email" placeholder="Enter Email Here" required>
-            <input name="credentials[password]" type="password" placeholder="Enter Password Here" required>
-            <button>Sign In</button>
-          </form>
-          <form id='sign-out'>
-            <button>Sign Out</button>
-          </form>
-          <form id="change-password">
-            <input name="passwords[old]" type="password" placeholder='Enter Old Password'required>
-            <input name="passwords[new]" type="password" placeholder='Enter New Password' required>
-            <button>Change Password</button>
-          </form>
-        </section>
-        <div id='error-message'></div>
-
-        <section id='game-section'>
-          <!--Button trigger modal -->
-          <button id='index-games' type="button" class="btn btn-primary" data-toggle="modal" data-target="#gameIndex">
-            View All Games
-          </button>
-          <!-- Modal -->
-          <div class="modal fade" id="gameIndex" tabindex="-1" role="dialog" aria-labelledby="gameIndexTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="gameIndexTitle">All Games Played</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <!-- Games Index goes here -->
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <section id='auth-section' class="d-flex justify-content-center">
+          <!-- SIGN UP MODAL STARTS HERE -->
+          <section id='signUpSection'>
+            <button id='signUpButton' type="button" class="btn" data-toggle="modal" data-target="#signUpModal">
+              Sign Up
+            </button>
+            <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id='sign-up'>
+                      <input name="credentials[email]" type="email" placeholder="Enter Email Here" required>
+                        <input name="credentials[password]" type="password" placeholder="Enter Password Here" required>
+                        <input name="credentials[password_confirmation]" type="password" placeholder="Enter Password Again" required>
+                        <button>Sign Up</button>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <button id='newGame'>Play New Game</button>
-          <div class="container">
-            <div id='gameMessage'></div>
-            <div class="row">
-              <div id='0' class="col-4 box" data-cell-index='0'></div>
-              <div id='1' class="col-4 box" data-cell-index='1'></div>
-              <div id='2' class="col-4 box" data-cell-index='2'></div>
-              <div id='3' class="col-4 box" data-cell-index='3'></div>
-              <div id='4' class="col-4 box" data-cell-index='4'></div>
-              <div id='5' class="col-4 box" data-cell-index='5'></div>
-              <div id='6' class="col-4 box" data-cell-index='6'></div>
-              <div id='7' class="col-4 box" data-cell-index='7'></div>
-              <div id='8' class="col-4 box" data-cell-index='8'></div>
+          </section>
+          <!-- SIGN UP MODAL ENDS HERE -->
+          <!-- SIGN IN MODAL STARTS HERE -->
+          <section id='signInSection'>
+            <button id='signInButton' type="button" class="btn" data-toggle="modal" data-target="#signInModal">
+              Sign In
+            </button>
+            <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="signInModalLabel">Sign In</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id='sign-in'>
+                      <input name="credentials[email]" type="email" placeholder="Enter Email Here" required>
+                      <input name="credentials[password]" type="password" placeholder="Enter Password Here" required>
+                      <button>Sign In</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
+          <!-- SIGN IN MODAL ENDS HERE -->
+          <form id='sign-out'>
+            <button class="btn">Sign Out</button>
+          </form>
+          <!-- CHANGE PASSWORD MODAL STARTS HERE -->
+          <section id='changePassSection'>
+            <button id='changePassButton' type="button" class="btn" data-toggle="modal" data-target="#changePassModal">
+              Change Password
+            </button>
+            <div class="modal fade" id="changePassModal" tabindex="-1" role="dialog" aria-labelledby="changePassModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="changePassModalLabel">Change Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="change-password">
+                      <input name="passwords[old]" type="password" placeholder='Enter Old Password'required>
+                      <input name="passwords[new]" type="password" placeholder='Enter New Password' required>
+                      <button>Change Password</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- CHANGE PASSWORD MODAL ENDS HERE -->
+          <!-- VIEW ALL GAMES MODAL STARTS HERE -->
+          <section id='viewGamesModal'>
+            <button id='index-games' type="button" class="btn" data-toggle="modal" data-target="#gameIndex">
+              View All Games
+            </button>
+            <div class="modal fade" id="gameIndex" tabindex="-1" role="dialog" aria-labelledby="gameIndexTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="gameIndexTitle">All Games Played</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Games Index goes here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <button id='newGame' class="btn">Play New Game</button>
+          <!-- VIEW ALL GAMES MODAL ENDS HERE -->
         </section>
+        <div id='error-message'></div>
+        <div class="container">
+          <div id='gameMessage'></div>
+          <div class="row">
+            <div id='0' class="col-4 box" data-cell-index='0'></div>
+            <div id='1' class="col-4 box" data-cell-index='1'></div>
+            <div id='2' class="col-4 box" data-cell-index='2'></div>
+            <div id='3' class="col-4 box" data-cell-index='3'></div>
+            <div id='4' class="col-4 box" data-cell-index='4'></div>
+            <div id='5' class="col-4 box" data-cell-index='5'></div>
+            <div id='6' class="col-4 box" data-cell-index='6'></div>
+            <div id='7' class="col-4 box" data-cell-index='7'></div>
+            <div id='8' class="col-4 box" data-cell-index='8'></div>
+          </div>
+        </div>
       </main>
     </body>
 </html>

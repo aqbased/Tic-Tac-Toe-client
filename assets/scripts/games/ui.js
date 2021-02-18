@@ -1,10 +1,8 @@
 const store = require('../store')
-// const events = require('./events')
 
 const onNewGameSuccess = function (response) {
   store.game = response.game
-  $('#gameMessage').text('Player ' + store.startPlayer + ', it\' your move!.')
-  console.log('in ngs')
+  $('#gameMessage').text('Player ' + store.startPlayer + ', it\'s your move!')
   $('.container').show()
 }
 
@@ -30,10 +28,10 @@ const onUpdateSuccess = function () {
   if ($('#gameMessage').html() !== ('Player ' + store.startPlayer + ' has won!')) {
     if (store.startPlayer === 'X') {
       store.startPlayer = 'O'
-      $('#gameMessage').text('Player ' + store.startPlayer + ', it\' your move!.')
+      $('#gameMessage').text('Player ' + store.startPlayer + ', it\'s your move!')
     } else {
       store.startPlayer = 'X'
-      $('#gameMessage').text('Player ' + store.startPlayer + ', it\' your move!.')
+      $('#gameMessage').text('Player ' + store.startPlayer + ', it\'s your move!')
     }
   }
 }
@@ -55,7 +53,7 @@ const isDraw = function () {
 
 const onPlayAgainSuccess = function (response) {
   store.game = response.game
-  $('#gameMessage').text('Player ' + store.startPlayer + ', it\' your move!.')
+  $('#gameMessage').text('Player ' + store.startPlayer + ', it\'s your move!')
   $('.container').css('pointer-events', '')
   $('.container').show()
 }
