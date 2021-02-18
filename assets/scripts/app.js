@@ -13,6 +13,7 @@ $(() => {
   $('#newGame').hide()
   $('#change-password').hide()
   $('#sign-out').hide()
+  $('#changePassButton').hide()
 
   // AUTH
   $('#sign-up').on('submit', authEvents.onSignUp)
